@@ -144,20 +144,6 @@ cd backend && pytest tests/ -v
 cd frontend && npx vitest run
 ```
 
----
-
-## What's intentionally excluded from version control
-
-Covered by the root `.gitignore`:
-
-- `node_modules/`, `.venv/`, `__pycache__/`, `*.pyc`
-- `*.db`, `*.sqlite`, `dist/`, `logs/`
-- `.env` and `.env.*` (committed template: `.env.example`)
-- `.claude/`, `CLAUDE.md`, `.cursor/`, `.aider*`, `AGENT.md`, `AGENTS.md` — AI tooling artifacts
-- `task.md`, `TODO.md`, `NOTES.md` — local planning notes
-
----
-
 ## Troubleshooting
 
 | Symptom | Likely cause / fix |
