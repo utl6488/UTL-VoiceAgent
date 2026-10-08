@@ -1,0 +1,85 @@
+/* MicButton — the big, obvious mic toggle for the Call page.
+   Uses the shared design tokens from src/index.css. */
+
+.micButton {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+
+  width: 9.5rem;
+  height: 9.5rem;
+  border-radius: 50%;
+
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.1s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.micButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+  filter: brightness(1.04);
+}
+
+.micButton:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+}
+
+.micButton:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+.micButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+/* Idle state: ready to start — brand gradient with a soft glow. */
+.idle {
+  background: var(--gradient-brand);
+  box-shadow: 0 10px 30px var(--color-accent-soft),
+    0 0 0 8px var(--color-accent-soft);
+}
+
+/* Active state: a session is live — danger colored with a pulsing ring. */
+.active {
+  background: linear-gradient(135deg, #ef5a5a 0%, #d64545 100%);
+  box-shadow: 0 10px 30px var(--color-danger-soft);
+  animation: micPulse 1.6s ease-in-out infinite;
+}
+
+.icon {
+  font-size: 2.6rem;
+  line-height: 1;
+}
+
+.text {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+@keyframes micPulse {
+  0%,
+  100% {
+    box-shadow: 0 10px 30px var(--color-danger-soft),
+      0 0 0 0 rgba(214, 69, 69, 0.45);
+  }
+  50% {
+    box-shadow: 0 10px 30px var(--color-danger-soft),
+      0 0 0 16px rgba(214, 69, 69, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .micButton,
+  .active {
+    animation: none;
+    transition: none;
+  }
+}

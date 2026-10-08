@@ -1,0 +1,239 @@
+/* Dashboard page styles. Uses the shared design tokens from src/index.css. */
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 90rem;
+  margin: 0 auto;
+  padding: 2rem 2.5rem 3rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.heading {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  width: fit-content;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+}
+
+/* Card wrapper for the table section. */
+.card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.tableSection {
+  width: 100%;
+  /* Mobile-friendly: the records table scrolls horizontally when it is wider
+     than the viewport. */
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--color-surface);
+}
+
+.th {
+  text-align: left;
+  padding: 0.85rem 1.1rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-subtle);
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-surface-2);
+}
+
+.emptyState {
+  margin: 0;
+  padding: 3rem 1rem;
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.emptyIcon {
+  display: block;
+  font-size: 2.25rem;
+  margin-bottom: 0.5rem;
+  opacity: 0.7;
+}
+
+/* First-load loading skeleton. */
+.skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.skeletonRow {
+  height: 2.75rem;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(
+    90deg,
+    var(--color-surface-2) 25%,
+    var(--color-surface-hover) 37%,
+    var(--color-surface-2) 63%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeletonRow {
+    animation: none;
+  }
+}
+
+/* Confirmation modal. */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background-color: rgba(10, 14, 22, 0.55);
+  backdrop-filter: blur(3px);
+  z-index: 100;
+  animation: overlayIn 0.15s ease;
+}
+
+.modal {
+  width: 100%;
+  max-width: 25rem;
+  padding: 1.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-bg-elevated);
+  color: var(--color-text);
+  box-shadow: var(--shadow-lg);
+  animation: modalIn 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.modalIconWrap {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-bottom: 1rem;
+  border-radius: var(--radius-md);
+  background-color: var(--color-danger-soft);
+  color: var(--color-danger);
+  font-size: 1.35rem;
+}
+
+.modalTitle {
+  margin: 0 0 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.modalBody {
+  margin: 0 0 1.5rem;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.cancelButton,
+.confirmButton {
+  padding: 0.55rem 1.1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid var(--color-border);
+  transition: transform 0.1s ease, filter 0.12s ease,
+    background-color 0.12s ease, border-color 0.12s ease;
+}
+
+.cancelButton {
+  background-color: var(--color-surface-2);
+  color: var(--color-text);
+}
+
+.confirmButton {
+  background-color: var(--color-danger);
+  border-color: var(--color-danger);
+  color: #ffffff;
+}
+
+.cancelButton:hover {
+  border-color: var(--color-border-strong);
+  background-color: var(--color-surface-hover);
+}
+
+.confirmButton:hover {
+  filter: brightness(1.05);
+}
+
+.cancelButton:active,
+.confirmButton:active {
+  transform: translateY(1px);
+}
+
+@keyframes overlayIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modalOverlay,
+  .modal {
+    animation: none;
+  }
+}

@@ -1,0 +1,66 @@
+/* Toast styles. Honors the shared CSS variables / prefers-color-scheme from
+   src/index.css: errors use --color-danger; info/success use the accent and
+   surface colors. */
+
+.container {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: min(22rem, calc(100vw - 2rem));
+  pointer-events: none;
+}
+
+.toast {
+  pointer-events: auto;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.625rem 0.875rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.error {
+  border-color: var(--color-danger);
+  border-left: 4px solid var(--color-danger);
+}
+
+.success {
+  border-color: var(--color-accent);
+  border-left: 4px solid var(--color-accent);
+}
+
+.info {
+  border-left: 4px solid var(--color-accent);
+}
+
+.message {
+  flex: 1;
+  word-break: break-word;
+}
+
+.dismiss {
+  flex-shrink: 0;
+  margin: -0.25rem -0.25rem -0.25rem 0;
+  padding: 0.25rem 0.4rem;
+  border: none;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 0.25rem;
+}
+
+.dismiss:hover {
+  color: var(--color-text);
+}

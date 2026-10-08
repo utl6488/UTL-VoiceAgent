@@ -1,0 +1,108 @@
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.1rem;
+  align-items: flex-end;
+  padding: 1.1rem 1.25rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.search {
+  flex: 1 1 14rem;
+}
+
+.label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-subtle);
+}
+
+.input {
+  padding: 0.55rem 0.8rem;
+  font: inherit;
+  color: var(--color-text);
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  transition: border-color 0.14s ease, box-shadow 0.14s ease,
+    background-color 0.14s ease;
+}
+
+.input::placeholder {
+  color: var(--color-text-subtle);
+}
+
+.input:hover {
+  border-color: var(--color-border-strong);
+}
+
+.input:focus-visible {
+  outline: none;
+  border-color: var(--color-accent);
+  background-color: var(--color-surface);
+  box-shadow: 0 0 0 3px var(--color-accent-soft);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.chip {
+  padding: 0.5rem 0.9rem;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: color 0.14s ease, background-color 0.14s ease,
+    border-color 0.14s ease, transform 0.1s ease;
+}
+
+.chip:hover {
+  color: var(--color-text);
+  border-color: var(--color-accent);
+}
+
+.chip:active {
+  transform: translateY(1px);
+}
+
+.chip:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-accent-soft);
+}
+
+.chip[aria-pressed='true'] {
+  color: #ffffff;
+  background: var(--gradient-brand);
+  border-color: transparent;
+  box-shadow: var(--shadow-sm);
+}
+
+@media (max-width: 40rem) {
+  .filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .input {
+    width: 100%;
+  }
+}

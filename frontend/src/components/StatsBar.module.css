@@ -1,0 +1,113 @@
+/* StatsBar styles. Uses the shared design tokens from src/index.css. */
+
+.statsBar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  width: 100%;
+}
+
+.tile {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1.1rem 1.2rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: transform 0.14s ease, box-shadow 0.14s ease;
+}
+
+.tile::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: var(--tile-accent, var(--color-accent));
+}
+
+.tile:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.iconChip {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-md);
+  background: var(--tile-accent-soft, var(--color-accent-soft));
+  color: var(--tile-accent, var(--color-accent));
+  font-size: 1.2rem;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+/* Accent variants, applied per tile. */
+.total {
+  --tile-accent: var(--color-text-muted);
+  --tile-accent-soft: var(--color-surface-2);
+}
+.en {
+  --tile-accent: var(--lang-en);
+  --tile-accent-soft: var(--lang-en-soft);
+}
+.hi {
+  --tile-accent: var(--lang-hi);
+  --tile-accent-soft: var(--lang-hi-soft);
+}
+.mixed {
+  --tile-accent: var(--lang-mixed);
+  --tile-accent-soft: var(--lang-mixed-soft);
+}
+
+.label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--color-text-subtle);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.value {
+  font-size: 1.75rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--color-text);
+}
+
+.placeholder {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 1.25rem 1rem;
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface);
+}
+
+/* Stack tiles on narrow viewports for a mobile-friendly layout. */
+@media (max-width: 40rem) {
+  .statsBar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tile {
+    transition: none;
+  }
+}

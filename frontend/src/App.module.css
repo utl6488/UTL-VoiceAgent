@@ -1,0 +1,86 @@
+/* App shell: sticky nav header + page container. Honors the shared design
+   tokens in src/index.css for color, elevation, and radius. */
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(
+      1200px 500px at 80% -10%,
+      var(--color-accent-soft),
+      transparent 60%
+    ),
+    var(--color-bg);
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  color: var(--color-text);
+  background-color: color-mix(in srgb, var(--color-bg-elevated) 80%, transparent);
+  backdrop-filter: saturate(140%) blur(10px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+}
+
+.brandMark {
+  display: inline-grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--radius-sm);
+  background: var(--gradient-brand);
+  color: #fff;
+  font-size: 1rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.nav {
+  display: flex;
+  gap: 0.35rem;
+  padding: 0.25rem;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+}
+
+.link {
+  text-decoration: none;
+  color: var(--color-text-muted);
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.link:hover {
+  color: var(--color-text);
+  background-color: var(--color-surface-hover);
+}
+
+.linkActive,
+.linkActive:hover {
+  color: #fff;
+  background: var(--gradient-brand);
+  box-shadow: var(--shadow-sm);
+}
+
+.spacer {
+  flex: 1;
+}
